@@ -13,7 +13,7 @@ uint16_t outVoltage(uint8_t ch){
   
   Wire.beginTransmission(ADC_ADDR);
   Wire.write(0X01);
-  Wire.write(0XC4 | (ch << 4));
+  Wire.write(0XC0 | (ch << 4));
   //Wire.write(0XC4);   
   Wire.write(0X83);
   Wire.endTransmission();
@@ -22,7 +22,7 @@ uint16_t outVoltage(uint8_t ch){
   Wire.write(0x00); 
   Wire.endTransmission();
 
-  delay(10);
+  delay(50);
   
   Wire.requestFrom(ADC_ADDR, 2);
   while(Wire.available()){
@@ -36,7 +36,7 @@ uint16_t outVoltage(uint8_t ch){
 void setup() {
   // put your setup code here, to run once:
   M5.begin();
-  Wire.begin(21, 22);
+  Wire.begin();
   dacWrite(25, 0);
 
   M5.Lcd.setCursor(140, 0, 4);
@@ -49,9 +49,9 @@ uint16_t adc_ch2 = 0;
 uint16_t adc_ch3 = 0;
 void loop() {
   adc_ch0 = outVoltage(0);
-  //adc_ch1 = outVoltage(1);
-  //adc_ch2 = outVoltage(2);
-  //adc_ch3 = outVoltage(3);
+  adc_ch1 = outVoltage(1);
+  adc_ch2 = outVoltage(2);
+  adc_ch3 = outVoltage(3);
   Serial.printf("ch0:%d ch1:%d ch2:%d  ch3:%d\n", adc_ch0, adc_ch1, adc_ch2,adc_ch3);
   delay(500);
 }
