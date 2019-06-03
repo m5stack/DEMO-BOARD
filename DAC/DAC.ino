@@ -1,8 +1,5 @@
 #include <M5Stack.h>
 
-/*
-  note:
-*/
 #define DAC_ADDR 0x4C
 
 void outVoltage(uint8_t ch,uint16_t v){
@@ -28,6 +25,11 @@ void setup() {
   outVoltage(1,512);   //2.50v
   outVoltage(2,768);   //3.75v
   outVoltage(3,1023);  //5.00v
+
+  M5.Lcd.setCursor(40, 100, 4);
+  M5.Lcd.println("ch0:1.25V ch1:2.50V");
+  M5.Lcd.setCursor(40, 130, 4);
+  M5.Lcd.println("ch2:3.75V ch3:5.00V");
 }
 
 void loop() {

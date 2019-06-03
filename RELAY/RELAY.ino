@@ -12,7 +12,9 @@ const int In_7 = 15;
 
 void setup() {
   // put your setup code here, to run once:
-
+  M5.begin();
+  M5.Lcd.setCursor(120, 110, 4);
+  M5.Lcd.println("RELAY");
   pinMode(In_0,OUTPUT);
   pinMode(In_1,OUTPUT);
   pinMode(In_2,OUTPUT);
@@ -36,7 +38,6 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-
   digitalWrite(In_0, LOW);
   digitalWrite(In_1, LOW);
   digitalWrite(In_2, LOW);
@@ -46,10 +47,7 @@ void loop() {
   digitalWrite(In_6, LOW);
   digitalWrite(In_7, LOW);
 
-
-  delay(3000);
-
-
+  delay(2000);
 
   digitalWrite(In_0, HIGH);
   digitalWrite(In_1, HIGH);
@@ -59,8 +57,7 @@ void loop() {
   digitalWrite(In_5, HIGH);
   digitalWrite(In_6, HIGH);
   digitalWrite(In_7, HIGH);
-
-
-  delay(3000);
+  
+  delay(2000);
 
 }

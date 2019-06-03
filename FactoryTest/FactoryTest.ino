@@ -69,10 +69,10 @@ void dac(){
     outVoltage(2,768);   //3.75v
     outVoltage(3,1023);  //5.00v
   }
-   outVoltage(0,256);   //1.25v
-   outVoltage(1,512);   //2.50v
-   outVoltage(2,768);   //3.75v
-    outVoltage(3,1023);  //5.00v
+  outVoltage(0,256);   //1.25v
+  outVoltage(1,512);   //2.50v
+  outVoltage(2,768);   //3.75v
+  outVoltage(3,1023);  //5.00v
 }
 
 #define ADC_ADDR 0x48
@@ -111,7 +111,8 @@ void adc(){
   uint16_t adc_ch1 = 0;
   uint16_t adc_ch2 = 0;
   uint16_t adc_ch3 = 0;
-   if(!setup_flag){
+  
+  if(!setup_flag){
     setup_flag = 1;
     gpio_reset_pin(GPIO_NUM_21);
     gpio_reset_pin(GPIO_NUM_22);
@@ -120,11 +121,8 @@ void adc(){
     M5.Lcd.setCursor(140, 30, 4);
     M5.Lcd.print("ADC");
     M5.Lcd.setCursor(0, 60, 4);
-    M5.Lcd.println("PIN : SCL:22,SDA:21");
-
-
-    
-   }
+    M5.Lcd.println("PIN : SCL:22,SDA:21");  
+  }
   adc_ch0 = InVoltage(0);
   adc_ch1 = InVoltage(1);
   adc_ch2 = InVoltage(2);
@@ -133,7 +131,7 @@ void adc(){
 
   M5.Lcd.setCursor(0, 120, 4);
   M5.Lcd.printf("ch0:%05d ch1:%05d\n", adc_ch0, adc_ch1);
-  M5.Lcd.printf("ch2:%05d ch3:%05d\n", adc_ch2,adc_ch3);
+  M5.Lcd.printf("ch2:%05d ch3:%05d\n", adc_ch2, adc_ch3);
   //delay(500);  
 }
 
@@ -271,7 +269,7 @@ void matrix(){
    //NEOPIXEL
    FastLED.setBrightness(BRIGHTNESS);
    led_count = 0;
-   }
+   。}
    led_count++;
    if(led_count > 2000)led_count  = 0;
    if((led_count / 500)  == 0){
@@ -676,6 +674,5 @@ void loop() {
     break; 
     default:break;
   }
-
 
 }

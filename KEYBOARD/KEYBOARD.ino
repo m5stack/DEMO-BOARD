@@ -2,7 +2,10 @@
 #include <Keypad.h>
 
 
-//https://github.com/Chris--A/Keypad
+/***
+ *  note:You should first install the keyboard library.
+ *  https://github.com/Chris--A/Keypad
+ ***/
 
 const byte ROWS = 4; //four rows
 const byte COLS = 4; //three columns
@@ -23,6 +26,9 @@ Keypad keypad = Keypad(makeKeymap(keys), rowPins, colPins, ROWS, COLS);
 void setup() {
   // put your setup code here, to run once:
   M5.begin();
+   
+  M5.Lcd.setCursor(100, 0, 4);
+  M5.Lcd.println("KEYBOARD");
 }
 
 void loop() {
@@ -30,6 +36,8 @@ void loop() {
   char key = keypad.getKey();
   if(key){
     Serial.println(key);
+    M5.Lcd.fillRect(150, 150, 80, 50, BLACK);
+    M5.Lcd.setCursor(150, 140, 4);
+    M5.Lcd.printf("%c",'A');
   }
-
 }

@@ -1,14 +1,19 @@
+#include <M5Stack.h>
 #include "driver/ledc.h"
 
+const int servo_pin = 15;
 int freq = 50;
 int ledChannel = 0;
 int resolution = 8;
  
 void setup() {
- 
+  
+  M5.begin();
+  M5.Lcd.setCursor(120, 110, 4);
+  M5.Lcd.println("SERVO");
   ledcSetup(ledChannel, freq, resolution);
-  ledcAttachPin(15, ledChannel);
- 
+  ledcAttachPin(servo_pin, ledChannel);
+
 }
  
 void loop() {

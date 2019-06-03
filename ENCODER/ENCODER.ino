@@ -29,7 +29,7 @@ void encoderEvent() {
 }
 
 void setup() {
-  // put your setup code here, to run once:
+  //put your setup code here, to run once:
   M5.begin();
   pinMode(phaseA, INPUT_PULLUP);
   pinMode(phaseB, INPUT_PULLUP);
