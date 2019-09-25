@@ -501,9 +501,9 @@ void air(){
     M5.Lcd.setCursor(0, 60, 4);
     M5.Lcd.println("PIN : SCL:22,SDA:21");
 
-    while(!bme.begin(0x76)){  
-     Serial.println("Could not find a valid BMP280 sensor, check wiring!");
-    }
+//    while(!bme.begin(0x76)){  
+//     Serial.println("Could not find a valid BMP280 sensor, check wiring!");
+//    }
   }
 
   float pressure = bme.readPressure();
@@ -654,19 +654,17 @@ void loop() {
     break;
     case 7:luminosity();
     break;
-    case 8:luminosity();
+    case 8:key();
     break;
-    case 9:key();
+    case 9:dcmotor();
     break;
-    case 10:dcmotor();
+    case 10:relay();
     break;
-    case 11:relay();
+    case 11:servo();
     break;
-    case 12:servo();
+    case 12:stmpmotor();
     break;
-    case 13:stmpmotor();
-    break;
-    case 16:rfid();
+    case 13:rfid();
     break;
     case 14:uart232();
     break;
