@@ -269,7 +269,7 @@ void matrix(){
    //NEOPIXEL
    FastLED.setBrightness(BRIGHTNESS);
    led_count = 0;
-   。}
+   }
    led_count++;
    if(led_count > 2000)led_count  = 0;
    if((led_count / 500)  == 0){
