@@ -63,10 +63,11 @@ Note：PIN is under the current test project，which pin would to be connected
 
  
 15 RS232
- 接线后，并将串口短接，（第二排，第二 第三针短路），可以看到显示屏 re_num 数据递增
+   After wiring, short the serial port (the second row, the second pin and the third pin are short-circuited), you can see that the display re_num data increases
+
  
 16 RS485
- 接线后，并将串口短接，（第二排，第二 第三针短路），可以看到显示屏 re_num 数据递增
+   After wiring, short the serial port (the second row, the second pin and the third pin are short-circuited), you can see that the display re_num data increases
    
 17 RFID
- 刷卡后。识别出芯片ID,并打印到界面。
+   After read card. Recognize the chip ID and print it to the screen.  
