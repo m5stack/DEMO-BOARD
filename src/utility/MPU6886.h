@@ -10,7 +10,6 @@
 
 #include <Wire.h>
 #include <Arduino.h>
-#include "MahonyAHRS.h"
 
 #define MPU6886_ADDRESS           0x68 
 #define MPU6886_WHOAMI            0x75
@@ -44,6 +43,10 @@
 #define MPU6886_ACCEL_CONFIG2     0x1D
 #define MPU6886_FIFO_EN           0x23
 
+#define MPU6886_FIFO_ENABLE       0x23
+#define MPU6886_FIFO_COUNT        0x72
+#define MPU6886_FIFO_R_W          0x74
+#define MPU6886_GYRO_OFFSET       0x13
 //#define G (9.8)
 #define RtA     57.324841
 #define AtR    	0.0174533	
@@ -65,8 +68,8 @@ class MPU6886 {
         GFS_2000DPS
       };
 
-      Gscale Gyscale = GFS_2000DPS;
-      Ascale Acscale = AFS_8G;
+
+    
     public:
       MPU6886();
       int Init(void);
@@ -78,23 +81,28 @@ class MPU6886 {
       void getGyroData(float* gx, float* gy, float* gz);
       void getTempData(float *t);
 
-      void SetGyroFsr(Gscale scale);
-      void SetAccelFsr(Ascale scale);
+      void setGyroFsr(Gscale scale);
+      void setAccelFsr(Ascale scale);
 
       void getAhrsData(float *pitch,float *roll,float *yaw);
-      void getAttitude(double *pitch, double *roll);
+      void setFIFOEnable( bool enableflag );
+      uint8_t ReadFIFO();
+      void ReadFIFOBuff( uint8_t *DataBuff ,uint16_t Length );
+      uint16_t ReadFIFOCount();
+      void RestFIFO();
+      void setGyroOffset(uint16_t x, uint16_t y, uint16_t z);
+
     public:
-      float aRes, gRes;
+      float aRes, gRes, imuId;
+      Gscale Gyscale;
+      Ascale Acscale;
 
     private:
-        float _last_theta = 0;
-        float _last_phi = 0;
-        float _alpha = 0.5;
+
     private:
       void I2C_Read_NBytes(uint8_t driver_Addr, uint8_t start_Addr, uint8_t number_Bytes, uint8_t *read_Buffer);
       void I2C_Write_NBytes(uint8_t driver_Addr, uint8_t start_Addr, uint8_t number_Bytes, uint8_t *write_Buffer);
-      void getGres();
-      void getAres();
-
+      void updateGres();
+      void updateAres();
 };
 #endif
